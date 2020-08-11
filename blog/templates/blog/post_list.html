@@ -1,94 +1,13 @@
-<html>
-    <head>
-        <title>2's blog</title>
-    </head>
-    <body>
-        <div>
-            <h1><a href="/">2's Blog</a></h1>
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    {% for post in posts %}
+        <div class="post">
+            <div class="date">
+                {{ post.published_date }}
+            </div>
+            <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
+            <p>{{ post.text|linebreaksbr }}</p>
         </div>
-
-        <div>
-            <p>
-                published: {{ post.published_date }}<br>
-                <a href="https://www.youtube.com/watch?v=82UsnbunJUs&list=RD82UsnbunJUs&index=1">Jaden - Cabin Fever (Official Video)</a>
-            </p>
-            <h2><a href="">My first post</a></h2>
-            <p>
-                818 I’m on the way<br>
-                (I’m On the way)<br>
-                I’m thinking about you every day<br>
-                (Everyday)<br>
-                I think we should spend some time away<br>
-                (Stay on the beach)<br>
-                Stay with me in heaven everyday<br>
-                (Everyday)<br>
-                I wanna feel ya body on me<br>
-                Tall palm trees and kaleidoscope dreams<br>
-                <br>
-                Cause girl I got that CABIN FEVER<br>
-                You made me a believer<br>
-                Eating marshmallow pies<br>
-                I can see it in your eyes<br>
-                Girl it’s your speaking and I wanna believe ya<br>
-                <br>
-                Girl I really wanna believe ya<br>
-                If you love me, how come I never see ya<br>
-                Eating marshmallow pies<br>
-                while we’re flying through the sky<br>
-                Girl I got that CABIN FEVER<br>
-                <br>
-                310 we’re on the go<br>
-                (We’re on the go)<br>
-                Our life just like roller coast<br>
-                (Rollercoaster)<br>
-                I sip slow you took too long<br>
-                My heart and soul I call your phone<br>
-                I’m on the road<br>
-                I wanna feel ya body on me<br>
-                Tall palm trees and kaleidoscope dreams<br>
-                I’m at home thinking about you and me<br>
-                <br>
-                Cause girl I got that CABIN FEVER<br>
-                You made me a believer<br>
-                Eating marshmallow pies<br>
-                I can see it in your eyes<br>
-                Girl it’s your speaking and I wanna believe ya<br>
-                <br>
-                Girl I really wanna believe ya<br>
-                If you love me, how come I never see ya<br>
-                Eating marshmallow pies<br>
-                While we’re flying through the sky<br>
-                Girl I got that CABIN FEVER<br>
-                <br>
-                Up every night<br>
-                You got me up every night<br>
-                Stuck on your eyes<br>
-                It’s like it’s full of surprises<br>
-                Hand on your thigh<br>
-                I got your bed on my mind<br>
-                Can’t sleep at night<br>
-                Dreaming of a summertime<br>
-                Thinking about a summertime<br>
-                She’s a goddess<br>
-                Body divine<br>
-                Girl your sweeter than the grape off the vine<br>
-                Dreaming about a summertime<br>
-                <br>
-                I got that CABIN FEVER<br>
-                I got that CABIN FEVER<br>
-            </p>
-        </div>
-<div>
-    <h1><a href="/">two fun s Blog</a></h1>
-</div>
-
-{% for post in posts %}
-    <div>
-        <p>published: {{ post.published_date }}</p>
-        <h2><a href="">{{ post.title }}</a></h2>
-        <p>{{ post.text|linebreaksbr }}</p>
-    </div>
-{% endfor %}
-
-    </body>
-</html>
+    {% endfor %}
+{% endblock %}
